@@ -1,6 +1,6 @@
 # Cleaning data for all places of the country SINAN
 # only confirmed cases, assign year and week of first symptoms 
-# years 2000 to 2021
+# years 2007 to 2021
 # Code developed by Denise Cammarota
 
 import numpy as np
