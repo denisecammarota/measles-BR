@@ -60,3 +60,17 @@ data_inf_138 = data_total[data_total['COPAISINF'] == 138]
 data_inf_138 = data_inf_138.groupby(['ID_MUNICIP'])['CASO'].sum()
 data_inf_138 = data_inf_138.reset_index()
 
+# Cases resident abroad notified in X municipality
+data_res_abroad = data_total[data_total['ID_PAIS'] != 1]
+data_res_abroad = data_res_abroad[data_res_abroad['ID_PAIS'] != 0]
+data_res_abroad = data_res_abroad.groupby(['ID_MUNICIP'])['CASO'].sum()
+data_res_abroad = data_res_abroad.reset_index()
+data_res_abroad.to_csv('./Data/analyzed/res_abroad.csv')
+
+
+# Cases infected abroad notified in X municipality
+data_inf_abroad = data_total[data_total['ID_PAIS'] != 1]
+data_inf_abroad = data_inf_abroad[data_inf_abroad['ID_PAIS'] != 0]
+data_inf_abroad = data_inf_abroad.groupby(['ID_MUNICIP'])['CASO'].sum()
+data_inf_abroad = data_inf_abroad.reset_index()
+data_inf_abroad.to_csv('./Data/analyzed/inf_abroad.csv')

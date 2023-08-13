@@ -35,6 +35,14 @@ data_total['ANO_EPI'] =  data_total['SEM_PRI'].astype(str).str[:4]
 # Uniting them with a -
 data_total['DATA_EPI'] =  data_total['ANO_EPI'] + '-' + data_total['SEM_EPI']
 
+# Mean age of infection over time, overall cases, epidemiological week
+data_age = data_total.groupby(['DATA_EPI'])['NU_IDADE_N'].mean()
+data_age = data_age.reset_index()
+std_age = data_total.groupby(['DATA_EPI'])['NU_IDADE_N'].std()
+std_age = std_age.fillna(0)
+std_age = std_age.reset_index()
+data_age = data_age.merge(std_age, how = 'left', on = 'DATA_EPI')
+data_age.to_csv('./Data/analyzed/national_avg_age.csv')
 
 # National Epidemic Curve first, no difference between local/non-local cases
 national_curve = data_total.groupby(['DATA_EPI'])['CASO'].sum()
@@ -66,5 +74,6 @@ inf_curve_138 = inf_curve_138.groupby(['DATA_EPI'])['CASO'].sum()
 inf_curve_138 = inf_curve_138.reset_index()
 inf_curve_138.to_csv('./Data/analyzed/inf_138_epi_curve.csv')
 
+# Mean age of infection over time, overall cases, epidemiological week
 
 
