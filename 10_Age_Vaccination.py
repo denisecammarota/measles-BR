@@ -42,3 +42,8 @@ for muni in select_muni:
     data_aux = data_aux[data_aux['ID_MN_RESI'] == muni]
     data_aux  = data_aux[['NU_IDADE_N','CS_VACINA']]
     data_aux.to_csv('./Data/analyzed/age_vaccine_'+str(muni)+'.csv')
+    
+# All municipalities
+data_aux = data_total.copy()
+data_aux  = data_aux[['ID_MN_RESI','NU_IDADE_N','CS_VACINA']]
+data_aux.to_csv('./Data/analyzed/age_vaccine_municipalities.csv')
