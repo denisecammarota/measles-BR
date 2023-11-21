@@ -67,7 +67,6 @@ data_res_abroad = data_res_abroad.groupby(['ID_MUNICIP'])['CASO'].sum()
 data_res_abroad = data_res_abroad.reset_index()
 data_res_abroad.to_csv('./Data/analyzed/res_abroad.csv')
 
-
 # Cases infected abroad notified in X municipality
 data_inf_abroad = data_total[data_total['COPAISINF'] != 1]
 data_inf_abroad = data_inf_abroad[data_inf_abroad['COPAISINF'] != 0]

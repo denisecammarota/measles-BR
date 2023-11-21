@@ -52,6 +52,7 @@ national_curve.to_csv('./Data/analyzed/national_epi_curve.csv')
 # Curve for cases where Brazil is not the country of residence
 res_curve = data_total[data_total['ID_PAIS'] != 1]
 res_curve = res_curve.groupby(['DATA_EPI'])['CASO'].sum()
+#res_curve = res_curve.groupby(['ID_PAIS'])['CASO'].sum()
 res_curve = res_curve.reset_index()
 res_curve.to_csv('./Data/analyzed/res_epi_curve.csv')
 
@@ -59,6 +60,7 @@ res_curve.to_csv('./Data/analyzed/res_epi_curve.csv')
 inf_curve = data_total[data_total['COPAISINF'] != 1]
 inf_curve = inf_curve[inf_curve['COPAISINF'] != 0]
 inf_curve = inf_curve.groupby(['DATA_EPI'])['CASO'].sum()
+#inf_curve = inf_curve.groupby(['COPAISINF'])['CASO'].sum()
 inf_curve = inf_curve.reset_index()
 inf_curve.to_csv('./Data/analyzed/inf_epi_curve.csv')
 
@@ -73,7 +75,3 @@ inf_curve_138 = data_total[data_total['COPAISINF'] == 138]
 inf_curve_138 = inf_curve_138.groupby(['DATA_EPI'])['CASO'].sum()
 inf_curve_138 = inf_curve_138.reset_index()
 inf_curve_138.to_csv('./Data/analyzed/inf_138_epi_curve.csv')
-
-# Mean age of infection over time, overall cases, epidemiological week
-
-
